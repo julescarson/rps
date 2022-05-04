@@ -1,2 +1,2 @@
-# rps
-rock paper scissors game
+# Rock Paper Scissors
+Odin Project!
