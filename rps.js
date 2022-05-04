@@ -25,7 +25,7 @@ function computerPlay() {
     let rangeOptions = Math.round(Math.random()*100);
     // console.log(rangeOptions); //test
     
-    //ock paper scissors into thirds of 0 - 99
+    // rock paper scissors into thirds of 0 - 99
     if (rangeOptions >= 0 && rangeOptions <= 33) {
         computerResult = 'Rock';
     } else if (rangeOptions > 33 && rangeOptions <= 66) {
@@ -63,10 +63,20 @@ function playRound(computerSelection, playerSelection) {
     }
 }
 
-console.log(playRound(computerSelection, playerSelection));
+// console.log(playRound(computerSelection, playerSelection));
 
 
 function game() {
+   
+    for (i = 1; i <= 5; i++) {
+
+        console.log(`${i} :  ${computerSelection} ` + playRound(computerPlay(), playerSelection));
+        
+        
+        
+    }
+
 
 }
 
+game();
