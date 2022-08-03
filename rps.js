@@ -88,7 +88,6 @@ score.classList.add('score');
 let endResults = document.createElement('p');
 endResults.classList.add('endResults');
 
-
 function finalResult() {
     let resultText = '';
     if (computerScore > playerScore) {
