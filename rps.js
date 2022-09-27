@@ -57,22 +57,31 @@ const choices = document.createElement('div');
 choices.classList.add('choices');
 choices.style.cssText = (`display: flex;  `); // button style css
 
-
+// Creating buttons to add to DOM
+// container for buttons
+const rockBox = document.createElement('div');
+rockBox.classList.add('rockBox')
 
 // Rock
 const rockButton = document.createElement('button');
 rockButton.classList.add('rock');
-rockButton.textContent = "Rock!";
+const rockText = document.createElement('p');
+rockText.classList.add('rockText');
+rockText.innerText = "Rock!";
 
 // Paper
 const paperButton = document.createElement('button');
 paperButton.classList.add('paper');
-paperButton.textContent = "Paper!";
+const paperText = document.createElement('p');
+paperText.classList.add('paperText');
+paperText.innerText = "Paper!";
 
 // Scissors
 const scissorsButton = document.createElement('button');
 scissorsButton.classList.add('scissors');
-scissorsButton.textContent = "Scissors!";
+const scissorsText = document.createElement('p');
+scissorsText.classList.add('scissorsText');
+scissorsText.innerText = "Scissors!";
 
 // Round Results
 let roundResult = document.createElement('div');
@@ -80,6 +89,9 @@ roundResult.classList.add('result');
 
 let p = document.createElement('p');
 p.classList.add('p');
+
+const scoreDiv = document.createElement('div');
+scoreDiv.classList.add('score');
 
 let score = document.createElement('p');
 score.classList.add('score');
@@ -109,7 +121,8 @@ function gameOver() {
 function output() {
     p.textContent = `You: ${playerSelection} --- Computer: ${computerSelection}`;
     score.textContent = `Player Score: ${playerScore} --- Computer Score: ${computerScore}`
-    display.appendChild(score);
+    display.appendChild(scoreDiv);
+    scoreDiv.appendChild(score);
     display.appendChild(roundResult);
     roundResult.appendChild(p);
 }
@@ -117,9 +130,16 @@ function output() {
 
 // *** Add to DOM ***
 display.appendChild(choices);
-choices.appendChild(rockButton);
+
+choices.appendChild(rockBox);
+rockBox.appendChild(rockButton);
+
 choices.appendChild(paperButton);
 choices.appendChild(scissorsButton);
+
+rockButton.appendChild(rockText);
+paperButton.appendChild(paperText);
+scissorsButton.appendChild(scissorsText);
 
 // *** Gameplay ***
 rockButton.addEventListener('click', () => {

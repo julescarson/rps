@@ -1,0 +1,100 @@
+html,
+body {
+
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+
+
+.score,
+.result,
+.endResults {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    margin: 7px;
+    border: black 1px;
+    border-style: inset;
+    background: none;
+    overflow: hidden;
+}
+
+.choices {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    padding: 5em;
+}
+
+
+/* .rockBox {
+    width: 200px;
+    height: 200px;
+    overflow: hidden; 
+}*/
+
+.rock {
+    background: url(rock_blank.png);
+}
+
+.paper {
+    background: url(paper_blank.png);
+}
+
+.scissors {
+    background: url(scissors_blank.png);
+}
+
+.rock,
+.paper,
+.scissors {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    padding: 0px;
+    width: 200px;
+    height: 200px;
+
+}
+
+.rockText,
+.paperText,
+.scissorsText {
+    display: flex;
+    justify-content: center;
+    align-content: flex-end;
+    padding: 0;
+    margin: 0;
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 27px;
+    letter-spacing: -1px;
+    background: rgba(34, 34, 34, 0.7);
+    width: 200px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.rock:hover .rockText,
+.paper:hover .paperText,
+.scissors:hover .scissorsText {
+    color: white;
+    transform: translateY(-30px);
+    transition-duration: 0.4s;
+    transition-timing-function: cubic-bezier(0.88, -0.99, 0, 1.81);
+
+}
+
+.rock:hover,
+.paper:hover,
+.scissors:hover {
+    transition-duration: 0.3s;
+    transform: scale(1.12);
+    transform-origin: center;
+    box-shadow;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
