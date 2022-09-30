@@ -138,7 +138,7 @@ newGame.classList.add('newGame');
 
 const playAgain = document.createElement('button');
 playAgain.classList.add('playAgain');
-playAgain.innerText = 'Play Again?';
+playAgain.innerText = ` Play Again ?`;
 
 const winLoseText = document.createElement('p');
 winLoseText.classList.add('winLoseText');
