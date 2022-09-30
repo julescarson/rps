@@ -1,9 +1,10 @@
 html,
 body {
-
     margin: 0;
     padding: 0;
-    background-color: #ffffff;
+    background-color: #2C2F33;
+    font-size: 30px;
+
 }
 
 
@@ -12,14 +13,22 @@ body {
 .endResults {
     display: flex;
     justify-content: center;
+
+}
+
+.playAgain {
+    font-size: 30px;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
 button {
-    margin: 7px;
+    margin: 15px;
     border: black 1px;
     border-style: inset;
     background: none;
     overflow: hidden;
+
 }
 
 .choices {
@@ -27,8 +36,12 @@ button {
     flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
-    padding: 5em;
+    padding: 0;
+    margin: 20px;
+    margin-bottom: 20px;
 }
+
+
 
 
 /* .rockBox {
@@ -49,9 +62,14 @@ button {
     background: url(scissors_blank.png);
 }
 
+.grayedout {
+    filter: grayscale(100%);
+}
+
 .rock,
 .paper,
 .scissors {
+
     display: flex;
     justify-content: center;
     align-items: end;
@@ -61,9 +79,11 @@ button {
 
 }
 
+
 .rockText,
 .paperText,
 .scissorsText {
+    opacity: 75%;
     display: flex;
     justify-content: center;
     align-content: flex-end;
@@ -79,9 +99,22 @@ button {
     -webkit-font-smoothing: antialiased;
 }
 
+.hovering:hover {
+    transition-duration: 0.3s;
+    transform: scale(1.12);
+    transform-origin: center;
+    /* box-shadow: 0px 0px 6px 6px rgba(0, 255, 221, 0.4); */
+    /* border-color: rgba(0, 0, 0, 0); */
+    filter: brightness(105%);
+    cursor: pointer;
+}
+
+
+
 .rock:hover .rockText,
 .paper:hover .paperText,
 .scissors:hover .scissorsText {
+    opacity: 85%;
     color: white;
     transform: translateY(-30px);
     transition-duration: 0.4s;
@@ -89,12 +122,22 @@ button {
 
 }
 
-.rock:hover,
-.paper:hover,
-.scissors:hover {
-    transition-duration: 0.3s;
-    transform: scale(1.12);
-    transform-origin: center;
-    box-shadow;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+p {
+    display: flex;
+    justify-content: inherit;
+    align-items: flex-start;
+    margin: 20px;
+}
+
+.newGame {
+    display: flex;
+    justify-content: center;
+}
+
+.playerTextSelection {
+
+    animation: infinite;
+    transition-duration: 0.4ms;
+    transition-delay: 0.2ms;
 }

@@ -58,13 +58,14 @@ choices.classList.add('choices');
 choices.style.cssText = (`display: flex;  `); // button style css
 
 // Creating buttons to add to DOM
-// container for buttons
+// Rock
 const rockBox = document.createElement('div');
 rockBox.classList.add('rockBox')
 
-// Rock
 const rockButton = document.createElement('button');
-rockButton.classList.add('rock');
+rockButton.classList.add('rock', 'hovering');
+rockButton.classList.add('hovering');
+
 const rockText = document.createElement('p');
 rockText.classList.add('rockText');
 rockText.innerText = "Rock!";
@@ -72,6 +73,7 @@ rockText.innerText = "Rock!";
 // Paper
 const paperButton = document.createElement('button');
 paperButton.classList.add('paper');
+paperButton.classList.add('hovering');
 const paperText = document.createElement('p');
 paperText.classList.add('paperText');
 paperText.innerText = "Paper!";
@@ -79,29 +81,23 @@ paperText.innerText = "Paper!";
 // Scissors
 const scissorsButton = document.createElement('button');
 scissorsButton.classList.add('scissors');
+scissorsButton.classList.add('hovering');
 const scissorsText = document.createElement('p');
 scissorsText.classList.add('scissorsText');
 scissorsText.innerText = "Scissors!";
 
-// Round Results
-let roundResult = document.createElement('div');
-roundResult.classList.add('result');
+// numerical scores
+const cscore = document.createElement('p');
+cscore.classList.add('cscore');
 
-let p = document.createElement('p');
-p.classList.add('p');
+const pscore = document.createElement('p');
+pscore.classList.add('pscore');
 
-const scoreDiv = document.createElement('div');
-scoreDiv.classList.add('score');
 
-let score = document.createElement('p');
-score.classList.add('score');
-
-// End Results
-let endResults = document.createElement('p');
-endResults.classList.add('endResults');
-
+// game over - display winner
 function finalResult() {
     let resultText = '';
+
     if (computerScore > playerScore) {
         resultText = `You Lose!`
     } else {
@@ -110,38 +106,92 @@ function finalResult() {
     return resultText;
 }
 
+// game over - disable buttons
+function disableButtons() {
+    // buttons not usable
+    rockButton.disabled = true;
+    scissorsButton.disabled = true;
+    paperButton.disabled = true;
+    // hover animation removed
+    rockButton.classList.remove('hovering');
+    scissorsButton.classList.remove('hovering');
+    paperButton.classList.remove('hovering');
+    // gray out buttons
+    rockButton.classList.add('grayedout');
+    paperButton.classList.add('grayedout');
+    scissorsButton.classList.add('grayedout');
+    // remove text overlay for buttons
+    rockText.remove(this);
+    paperText.remove(this);
+    scissorsText.remove(this);
+}
 
+// new game button div
+const newGame = document.createElement('div');
+newGame.classList.add('newGame');
+
+const playAgain = document.createElement('button');
+playAgain.classList.add('playAgain');
+playAgain.innerText = 'Play Again?';
+
+
+// game over display
 function gameOver() {
-    choices.remove();
     console.log('gameover');
-    endResults.textContent = finalResult();
-    display.appendChild(endResults);
+    disableButtons();
+    display.appendChild(newGame);
+    newGame.appendChild(playAgain);
 }
 
+// elements to update as game played
+const playerTextSelection = document.createElement('p');
+const computerTextSelection = document.createElement('p');
+playerTextSelection.classList.add('playerTextSelection');
+computerTextSelection.classList.add('computerTextSelection');
+
+const playerBox = document.createElement('div');
+playerBox.classList.add('playerBox');
+
+const computerBox = document.createElement('div');
+computerBox.classList.add('computerBox');
+
+const resultBox = document.createElement('div');
+resultBox.classList.add('resultBox');
+
+
+// gameplay update
 function output() {
-    p.textContent = `You: ${playerSelection} --- Computer: ${computerSelection}`;
-    score.textContent = `Player Score: ${playerScore} --- Computer Score: ${computerScore}`
-    display.appendChild(scoreDiv);
-    scoreDiv.appendChild(score);
-    display.appendChild(roundResult);
-    roundResult.appendChild(p);
+
+    display.appendChild(resultBox);
+
+    playerTextSelection.textContent = `${playerSelection}`;
+    computerTextSelection.textContent = `${computerSelection}`;
+
+    pscore.textContent = `${playerScore} `;
+    cscore.textContent = `${computerScore} `;
+
+    resultBox.appendChild(playerBox);
+    playerBox.appendChild(playerTextSelection);
+    playerBox.appendChild(pscore);
+
+    resultBox.appendChild(computerBox);
+    computerBox.appendChild(computerTextSelection);
+    computerBox.appendChild(cscore);
+
+
 }
 
-
-// *** Add to DOM ***
+// at start
 display.appendChild(choices);
-
 choices.appendChild(rockBox);
 rockBox.appendChild(rockButton);
-
 choices.appendChild(paperButton);
 choices.appendChild(scissorsButton);
-
 rockButton.appendChild(rockText);
 paperButton.appendChild(paperText);
 scissorsButton.appendChild(scissorsText);
 
-// *** Gameplay ***
+// check button press, play game, output to user
 rockButton.addEventListener('click', () => {
     playerSelection = 'Rock';
     game();
@@ -158,5 +208,10 @@ scissorsButton.addEventListener('click', () => {
     playerSelection = 'Scissors';
     game();
     output();
+});
+
+//replay button 
+playAgain.addEventListener('click', () => {
+    location.reload();
 });
 
