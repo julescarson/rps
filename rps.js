@@ -57,6 +57,12 @@ const choices = document.createElement('div');
 choices.classList.add('choices');
 choices.style.cssText = (`display: flex;  `); // button style css
 
+
+// Rules
+const rules = document.createElement('p')
+rules.classList.add('rules');
+rules.textContent = 'Rock, Paper, Scissors. First to 5 wins.'
+
 // Creating buttons to add to DOM
 // Rock
 const rockBox = document.createElement('div');
@@ -134,11 +140,16 @@ const playAgain = document.createElement('button');
 playAgain.classList.add('playAgain');
 playAgain.innerText = 'Play Again?';
 
+const winLoseText = document.createElement('p');
+winLoseText.classList.add('winLoseText');
 
 // game over display
 function gameOver() {
     console.log('gameover');
+    winLoseText.textContent = finalResult();
     disableButtons();
+
+    display.appendChild(winLoseText);
     display.appendChild(newGame);
     newGame.appendChild(playAgain);
 }
@@ -158,31 +169,54 @@ computerBox.classList.add('computerBox');
 const resultBox = document.createElement('div');
 resultBox.classList.add('resultBox');
 
+const youText = document.createElement('p');
+youText.classList.add('youText');
+youText.textContent = 'You ';
+
+const computerText = document.createElement('p');
+computerText.classList.add('computerText');
+computerText.textContent = 'Computer ';
+
+const textCompare = document.createElement('div');
+textCompare.classList.add('textCompare');
 
 // gameplay update
+let removeRules = 1;
 function output() {
 
     display.appendChild(resultBox);
+    //remove rules ONCE
+    if (removeRules == 1) {
+        removeRules++;
+        display.removeChild(rules);
+    }
 
     playerTextSelection.textContent = `${playerSelection}`;
     computerTextSelection.textContent = `${computerSelection}`;
 
-    pscore.textContent = `${playerScore} `;
-    cscore.textContent = `${computerScore} `;
+    pscore.textContent = ` ${playerScore} `;
+    cscore.textContent = ` ${computerScore} `;
 
     resultBox.appendChild(playerBox);
-    playerBox.appendChild(playerTextSelection);
+    playerBox.appendChild(youText);
     playerBox.appendChild(pscore);
 
+
     resultBox.appendChild(computerBox);
-    computerBox.appendChild(computerTextSelection);
+    computerBox.appendChild(computerText);
     computerBox.appendChild(cscore);
+
+
+    display.appendChild(textCompare);
+    textCompare.appendChild(playerTextSelection);
+    textCompare.appendChild(computerTextSelection);
 
 
 }
 
-// at start
+// DOM at start
 display.appendChild(choices);
+display.appendChild(rules);
 choices.appendChild(rockBox);
 rockBox.appendChild(rockButton);
 choices.appendChild(paperButton);

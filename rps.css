@@ -17,6 +17,8 @@ body {
 }
 
 .playAgain {
+    color: white;
+    border-color: white;
     font-size: 30px;
     border-radius: 8px;
     cursor: pointer;
@@ -124,10 +126,10 @@ button {
 
 
 p {
-    display: flex;
-    justify-content: inherit;
-    align-items: flex-start;
-    margin: 20px;
+    white-space: pre;
+    margin: 0;
+    padding: 0;
+    color: white;
 }
 
 .newGame {
@@ -135,9 +137,63 @@ p {
     justify-content: center;
 }
 
-.playerTextSelection {
+.playerTextSelection,
+.computerTextSelection {
+    flex-wrap: wrap;
+    width: 100%;
 
-    animation: infinite;
-    transition-duration: 0.4ms;
-    transition-delay: 0.2ms;
+}
+
+
+.resultBox {
+    display: flex;
+    justify-content: center;
+}
+
+.pscore,
+.cscore {
+    display: inline-flex;
+    justify-content: center;
+    border-style: solid;
+    border-color: rgba 255, 255, 255, 0.2;
+    border-width: 1px;
+    height: 35px;
+
+}
+
+
+.playerBox,
+.computerBox {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 15px;
+}
+
+.textCompare {
+    display: flex;
+    justify-content: center;
+
+
+}
+
+.playerTextSelection {
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px;
+}
+
+.computerTextSelection {
+    display: flex;
+    justify-content: flex-start;
+    margin: 10px;
+}
+
+.winLoseText {
+    display: flex;
+    justify-content: center;
+}
+
+.rules {
+    display: flex;
+    justify-content: center;
 }
