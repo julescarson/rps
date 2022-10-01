@@ -9,11 +9,24 @@ body {
 
 .header {
     width: 100%;
-    height: 70px;
+    height: 50px;
     padding: 0;
     margin: 0;
-    background-color: #7e61ab;
+    background-color: black;
 
+}
+
+td {
+    width: 70px;
+}
+
+table {
+    font-size: 15px;
+}
+
+.roundTable {
+    display: flex;
+    justify-content: center;
 }
 
 
@@ -27,6 +40,7 @@ body {
 
 .playAgain {
     color: white;
+    background-color: #292929;
     border-color: white;
     font-size: 30px;
     border-radius: 8px;
@@ -60,6 +74,7 @@ button {
 
 .paper {
     background: url(paper_blank.png);
+
 }
 
 .scissors {
@@ -80,6 +95,7 @@ button {
     padding: 0px;
     width: 200px;
     height: 200px;
+    min-width: 200px;
 
 }
 
@@ -174,8 +190,6 @@ p {
 .textCompare {
     display: flex;
     justify-content: center;
-
-
 }
 
 .playerTextSelection {

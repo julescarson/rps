@@ -65,13 +65,9 @@ rules.textContent = 'Rock, Paper, Scissors. First to 5 wins.'
 
 // Creating buttons to add to DOM
 // Rock
-const rockBox = document.createElement('div');
-rockBox.classList.add('rockBox')
-
 const rockButton = document.createElement('button');
 rockButton.classList.add('rock', 'hovering');
 rockButton.classList.add('hovering');
-
 const rockText = document.createElement('p');
 rockText.classList.add('rockText');
 rockText.innerText = "Rock!";
@@ -180,16 +176,32 @@ computerText.textContent = 'Computer ';
 const textCompare = document.createElement('div');
 textCompare.classList.add('textCompare');
 
-// gameplay update
-let removeRules = 1;
-function output() {
 
-    display.appendChild(resultBox);
-    //remove rules ONCE
-    if (removeRules == 1) {
-        removeRules++;
+// round results table
+const roundTable = document.createElement('table');
+roundTable.classList.add('roundTable');
+
+function roundTableUpdate() {
+    let row = roundTable.insertRow(0);
+    let cell2 = row.insertCell(0);
+    let cell3 = row.insertCell(1);
+    cell2.innerText = playerSelection;
+    cell3.innerText = computerSelection;
+}
+
+// remove rules div
+let rRules = true;
+function removeRules() {
+    if (rRules == true) {
         display.removeChild(rules);
+        rRules = false;
     }
+}
+
+// gameplay update
+function output() {
+    //UI DIV
+    display.appendChild(resultBox);
 
     playerTextSelection.textContent = `${playerSelection}`;
     computerTextSelection.textContent = `${computerSelection}`;
@@ -211,14 +223,18 @@ function output() {
     textCompare.appendChild(playerTextSelection);
     textCompare.appendChild(computerTextSelection);
 
+    display.appendChild(roundTable);
 
+    //remove rules
+    removeRules();
+    //update table
+    roundTableUpdate();
 }
 
 // DOM at start
 display.appendChild(choices);
 display.appendChild(rules);
-choices.appendChild(rockBox);
-rockBox.appendChild(rockButton);
+choices.appendChild(rockButton);
 choices.appendChild(paperButton);
 choices.appendChild(scissorsButton);
 rockButton.appendChild(rockText);
